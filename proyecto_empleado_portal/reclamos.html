@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+h1, h2, h3 {
+    font-family: 'Great Vibes', cursive;
+    color: #ffcc00;
+}
+</style>
+
+
+<!-- Bootstrap CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset='UTF-8'><title>Panel Empleado</title><link rel='stylesheet' href='css/estilos.css'></head>
+<body>
+
+<header class="bg-warning text-dark py-3">
+  <div class="container d-flex justify-content-between align-items-center">
+    <h1 class="h4 mb-0">Lumora Envíos</h1>
+    <nav>
+      
+      
+      
+      <a href="empleado.html" class="btn btn-custom btn-sm me-2">Empleado</a>
+      
+    </nav>
+  </div>
+</header>
+
+<main class='container mt-4'>
+<header>Seguimiento de Envíos</header>
+<main>
+<h2>Centro de Reclamos</h2>
+<div id='enviosEmpleado'></div>
+
+
+<div class='mt-4'>
+  <form>
+    <div class="mb-3">
+      <label for="codigoEnvio" class="form-label">Código del Envío</label>
+      <input type="text" class="form-control" id="codigoEnvio" placeholder="Ej: ABC123">
+    </div>
+    <div class="mb-3">
+      <label for="mensaje" class="form-label">Descripción del Reclamo</label>
+      <textarea class="form-control" id="mensaje" rows="4" placeholder="Describe tu problema..."></textarea>
+    </div>
+    <button type="submit" class="btn btn-danger w-100">Enviar Reclamo</button>
+  </form>
+</div>
+<script>
+const div = document.getElementById('enviosEmpleado');
+envios.forEach((envio, index) => {
+const contenedor = document.createElement('div');
+contenedor.innerHTML = `<p><strong>${envio.codigo}</strong> - Estado actual: ${envio.estado}</p>
+<select onchange="actualizarEstado(${index}, this.value)">
+<option value=''>Cambiar estado</option>
+<option>Pendiente</option>
+<option>En camino</option>
+<option>Entregado</option>
+</select><hr>`;
+div.appendChild(contenedor);
+});
+function actualizarEstado(index, nuevoEstado) {
+envios[index].estado = nuevoEstado;
+alert(`Envío ${envios[index].codigo} actualizado a ${nuevoEstado}`);
+location.reload();
+}
+</script>
+</main>
+</main>
+</body>
+</html>
